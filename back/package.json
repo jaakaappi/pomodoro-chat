@@ -2,7 +2,7 @@
   "type": "module",
   "dependencies": {
     "express": "^4.17.3",
-    "express-ws": "^5.0.2"
+    "ws": "^8.5.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
