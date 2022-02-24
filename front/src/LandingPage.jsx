@@ -1,4 +1,4 @@
-import { Container, Typography, TextField, Button, Stack } from "@mui/material";
+import { Typography, TextField, Button, Stack } from "@mui/material";
 import { useState } from "react";
 
 const LandingPage = (props) => {
@@ -14,6 +14,8 @@ const LandingPage = (props) => {
       setinvalidRoomNameInput(true);
     }
   };
+
+  console.log("Landingpage");
 
   return (
     <>
