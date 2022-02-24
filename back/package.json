@@ -1,0 +1,13 @@
+{
+  "type": "module",
+  "dependencies": {
+    "express": "^4.17.3",
+    "express-ws": "^5.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "scripts": {
+    "start": "nodemon index.js"
+  }
+}
