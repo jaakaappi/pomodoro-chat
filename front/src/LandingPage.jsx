@@ -35,6 +35,7 @@ const LandingPage = (props) => {
             invalidRoomNameInput ? "You need to enter a room name" : ""
           }
           onChange={(e) => setRoomName(e.currentTarget.value)}
+          value={roomName}
         />
         <Button variant="outlined" onClick={handleButtonPressed}>
           Enter

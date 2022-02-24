@@ -7,8 +7,10 @@ import { createMessage } from "./utils";
 
 const ChatPage = (props) => {
   const { roomName } = props;
+
   const [ws, setWs] = useState(null);
   const [messages, setMessages] = useState([]);
+  const [userName, setUserName] = useState(randimals());
 
   useEffect(() => {
     const initialWs = new WebSocket("ws://localhost:3000");
@@ -25,7 +27,10 @@ const ChatPage = (props) => {
     });
   }, []);
 
-  const [userName, setUserName] = useState(randimals());
+  const sendMessage = (message) => {
+    setMessages([...messages, message]);
+    ws.send(createMessage("message", roomName, userName, message));
+  };
 
   console.log("Chatpage");
 
@@ -40,6 +45,7 @@ const ChatPage = (props) => {
             roomName={roomName}
             userName={userName}
             messages={messages}
+            sendMessage={sendMessage}
           />
         </Card>
       </Stack>

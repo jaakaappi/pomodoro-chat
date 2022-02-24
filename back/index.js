@@ -10,7 +10,7 @@ const createRoom = () => {};
 
 const reconnect = () => {};
 
-const broadcast = (room, message, ownId) => {
+const broadcastOthers = (room, message, ownId) => {
   connectionsPerRoom[room].forEach((connection) => {
     if (connection.id !== ownId) {
       connection.send(message);
@@ -31,8 +31,10 @@ wss.on("connection", function connection(ws) {
             connectionsPerRoom[message.room] = [];
           }
           connectionsPerRoom[message.room].push(ws);
-          broadcast(message.room, `${message.userName} joined!`, ws.id);
+          broadcastOthers(message.room, `${message.userName} joined!`, ws.id);
           ws.send(`Joined ${message.room}`);
+        case "message":
+          broadcastOthers(message.room, message.message, ws.id);
       }
     } catch (exception) {
       console.log(`Failed to parse message: ${exception}`);
